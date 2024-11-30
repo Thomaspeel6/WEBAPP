@@ -1,0 +1,17 @@
+<img src="{{ destination.image_url or url_for('static', filename='images/No_image.jpg') }}" 
+        class="card-img-top" 
+        alt="{{ destination.name }}">
+<div class="card-body">
+    <h5 class="card-title">{{ destination.name }}</h5>
+    <p><strong>Country:</strong> {{ destination.country }}</p>
+    <p>
+        {% if user_ratings.get(destination.id) %}
+            <p><strong>{{ viewing_user.username }} Rating:</strong> {{ user_ratings[destination.id] }} / 5</p>
+        {% else %}
+            <p><strong>{{ viewing_user.username }}</strong> has not rated this destination yet.</p>
+        {% endif %}
+    </p>
+    <p id="average-rating-{{ destination.id }}">
+        <strong>Average Rating:</strong> {{ destination.rating if destination.ratings_count > 0 else "No ratings yet" }}
+    </p>
+</div>

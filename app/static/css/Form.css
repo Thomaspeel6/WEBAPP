@@ -1,0 +1,61 @@
+/* Form container styling */
+.form-container {
+    margin: 0 auto; /* Center horizontally */
+    max-width: 500px; /* Limit width */
+    padding: 30px;
+    background-color: #f8f9fa; /* Light gray background */
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container-create {
+    padding-top: 50px;
+    margin: 0 auto;
+    margin-top: 100px; /* Push below header */
+    max-width: 500px;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 20px; /* Space between fields */
+}
+
+/* Form title styling */
+.form-title {
+    font-size: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #2e3439;
+}
+
+/* Button styling */
+.btn-primary {
+    width: 100%; /* Full-width */
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+/* Sort link styling */
+.sort-link {
+    text-decoration: none;
+    transition: color 0.2s ease; /* Smooth hover */
+}
+
+.sort-link.active {
+    font-weight: bold;
+    color: #e02f41; /* Highlight active link */
+    border-bottom: 2px solid #e02f41;
+}
+
+.sort-link:hover {
+    color: #075ab2; /* Hover color */
+    text-decoration: underline;
+}

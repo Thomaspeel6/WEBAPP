@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-6 col-sm-4">
+            <div class="content-wrapper">
+                <h2 class="text-center">Trips to {{ destination.name }}, {{ destination.country }}</h2>
+                <div class="row">
+                    {% for trip in trips %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <img src="{{ destination.image_url or url_for('static', filename='images/No_image.jpg') }}" class="card-img-top img-fluid" alt="{{ destination.name }}">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">{{ trip.name }}</h5>
+                                    <button type="button" class="btn btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#tripModal{{ trip.id }}">
+                                        View Details
+                                    </button>
+                                    <p class="text-muted">
+                                        Posted by {{ trip.user.username }}
+                                    </p>
+                                </div>
+                            </div>
+                            {% include 'trip_details_modal.html' %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

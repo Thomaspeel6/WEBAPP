@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Create Trip{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="form-container-create">
+        <h1 class="form-title">Create a New Trip</h1>
+        <form method="POST" action="{{ url_for('views.create_trip') }}">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label for="name">Trip Name</label>
+                {{ form.name(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="start_date">Start Date</label>
+                {{ form.start_date(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="end_date">End Date</label>
+                {{ form.end_date(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="destinations">Select Destinations</label>
+                <select class="form-control select2" id="destinations" name="destinations[]" multiple>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                {{ form.description(class="form-control") }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Create Trip</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+<div id="carouselTrip{{ trip.id }}" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for destination in trip.destinations %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <img src="{{ destination.image_url or url_for('static', filename='images/No_image.jpg') }}" 
+                    class= "card-img-top" 
+                    alt="{{ destination.name }}">
+
+                <div class="carousel-caption bottom-banner">
+                    <h5>{{ destination.name }}</h5>
+                    <p>{{ destination.country }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrip{{ trip.id }}" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselTrip{{ trip.id }}" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div class="card-body">
+    <h5 class="card-title">{{ trip.name }}</h5>
+    <p>Posted by: {{ trip.user.username }}</p>
+    <p class="card-text">
+        Destinations:
+        {% for destination in trip.destinations %}
+            <a href="{{ url_for('views.destination_trips', destination_id=destination.id) }}">
+                {{ destination.name }} ({{ destination.country }})
+            </a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    </p>
+    <div class="button-group">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tripModal{{ trip.id }}">
+        View Details
+    </button>
+    </div>
+</div>

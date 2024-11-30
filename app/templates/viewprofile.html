@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - {{ viewing_user.username }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-12">
+            <div class="content-wrapper">
+                <h2>Profile - {{ viewing_user.username }}</h2>
+                
+                <div class="profile-statistics mt-4">
+                    <h3>Profile Statistics</h3>
+                    <p><strong>{{ viewing_user.username}} </strong>has have visited <strong>{{ num_visited_destinations }}</strong> out of <strong> 28233 </strong> destinations.</p>
+                    <p><strong>{{ viewing_user.username}} </strong>has visited <strong>{{ num_visited_countries }}</strong> out of <strong> 197 </strong> countries.</p>
+                </div>
+
+                <hr>
+
+                <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav w-100">
+                            <li class="nav-item flex-fill">
+                                <a class="nav-link text-center {% if active_section == 'trips' %}active{% endif %}" href="{{ url_for('views.view_profile', section='trips' ,user_id=viewing_user.id) }}"><strong>{{ viewing_user.username}}'s </strong>Trips</a>
+                            </li>
+                            <li class="nav-item flex-fill">
+                                <a class="nav-link text-center {% if active_section == 'likes' %}active{% endif %}" href="{{ url_for('views.view_profile', section='likes', user_id=viewing_user.id) }}"><strong>{{ viewing_user.username}}'s </strong>Likes</a>
+                            </li>
+                            <li class="nav-item flex-fill">
+                                <a class="nav-link text-center {% if active_section == 'destinations' %}active{% endif %}" href="{{ url_for('views.view_profile', section='destinations', user_id=viewing_user.id) }}"><strong>{{ viewing_user.username}}'s </strong>Visited Destinations</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                {% if active_section == 'trips' %}
+                <div id="your-trips" class="mt-5">
+                    <h3>{{ viewing_user.username }} trips</h3>
+                    {% if trips %}
+                        <div class="row">
+                            {% for trip in trips %}
+                            <div class="col-md-4 mb-3" id="trip-{{ trip.id }}">
+                                <div class="card">
+                                   {% include 'cards/card_viewprofile.html' %}
+                                </div>
+                            </div>
+                            {% include 'trip_details_modal.html' %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted">{{ viewing_user.username }} has not created any trips yet.</p>
+                    {% endif %}
+                </div>
+
+                {% elif active_section == 'likes' %}
+                <div id="liked-trips" class="mt-5">
+                    <h3>{{ viewing_user.username }} Liked Trips</h3>
+                    {% if liked_trips %}
+                        <div class="row">
+                            {% for trip in liked_trips %}
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                  
+                                    {% include 'cards/card_viewprofile_likes.html' %}
+                                </div>
+                            </div>
+                            {% include 'trip_details_modal.html' %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted">{{ viewing_user.username }} has not liked any trips yet.</p>
+                    {% endif %}
+                </div>
+
+                {% elif active_section == 'destinations' %}
+                <div id="visited-destinations" class="mt-5">
+                    <h3>{{ viewing_user.username }} Visited Destinations</h3>
+                    {% if visited_destinations %}
+                        <div class="row">
+                            {% for destination in visited_destinations %}
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    {% include 'cards/card_viewprofile_visted.html' %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted">{{ viewing_user.username }} has not visited any destinations yet.</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% for destination in destinations %}
+<div class="col-md-4 mb-3">
+    <div class="card">
+        <img src="{{ destination.image_url or '/static/images/No_image.jpg' }}" class="card-img-top" alt="{{ destination.name }}">
+        <div class="card-body">
+            <h3 class="card-title">{{ destination.name }}</h3>
+            {% if destination.trips %}
+                <p>Average rating: {{destination.rating}}</p>
+                <a href="{{ url_for('views.destination_trips', destination_id=destination.id) }}" class="btn btn-primary">
+                    View Trips
+                </a>
+            {% else %}
+                <p class="text-muted">No trips to {{ destination.name }}. Be the first!</p>
+                <a href="https://en.wikipedia.org/wiki/{{ destination.name }}" class="btn btn-primary">
+                    Find out more
+                </a>    
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endfor %}

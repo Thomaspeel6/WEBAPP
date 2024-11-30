@@ -1,0 +1,32 @@
+All my coursewrok 2 was a buil upon and refrtured coursewrok1
+
+
+All basic images on the places are extracted from wikipidea, from their respective pages. ie,
+inspired bty the followinf link: 
+#https://stackoverflow.com/questions/30595918/is-there-any-api-to-get-image-from-wiki-page
+
+
+for my carasel functionality, i took refernce from the following wedbiste 
+https://stackoverflow.com/questions/60359615/how-to-create-a-dynamic-bootstrap-carousel-using-flask-python
+
+
+live search in my places is inspired by the following yt video,
+https://www.youtube.com/watch?v=hjAnhqR-XZk
+
+poppulation of search functionality in my create_trip was making use of select2 
+https://select2.org/
+
+cookie consent built from following coursenotes
+
+worked out how to do the pages from desicoviern this conversation 
+https://stackoverflow.com/questions/56847985/pagination-in-search-results-with-python-flask
+
+used the follwoing website to help build my login functianlity 
+https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login#step-9-adding-the-login-method
+
+I used chatgpt for the follwoing convestaion, ot get my modals and there functionality
+https://chatgpt.com/share/674a3a93-85d8-8008-bf16-7e4479b8c77d
+
+Basic image is from here 
+https://www.pexels.com/search/holiday/ 
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fholiday%2F&psig=AOvVaw1khfOjZFhpLKL87FJnT1As&ust=1732643254099000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCICQ6aOF-IkDFQAAAAAdAAAAABAE

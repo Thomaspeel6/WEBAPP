@@ -1,0 +1,29 @@
+<img src="{{ destination.image_url or url_for('static', filename='images/No_image.jpg') }}" 
+    class="card-img-top" 
+    alt="{{ destination.name }}">
+<div class="card-body">
+<h5 class="card-title">{{ destination.name }}</h5>
+<p><strong>Country:</strong> {{ destination.country }}</p>
+
+<form id="rating-form-{{ destination.id }}" class="rating-form" data-destination-id="{{ destination.id }}">
+    <div class="form-group">
+        <label for="rating-{{ destination.id }}" class="font-weight-bold">Rate This Destination</label>
+        <select id="rating-{{ destination.id }}" name="rating" class="form-control">
+            <option value="" disabled {% if not user_ratings.get(destination.id) %}selected{% endif %}>Choose a rating</option>
+            <option value="1" {% if user_ratings.get(destination.id) == 1 %}selected{% endif %}>1 - Poor</option>
+            <option value="2" {% if user_ratings.get(destination.id) == 2 %}selected{% endif %}>2 - Fair</option>
+            <option value="3" {% if user_ratings.get(destination.id) == 3 %}selected{% endif %}>3 - Good</option>
+            <option value="4" {% if user_ratings.get(destination.id) == 4 %}selected{% endif %}>4 - Very Good</option>
+            <option value="5" {% if user_ratings.get(destination.id) == 5 %}selected{% endif %}>5 - Excellent</option>
+        </select>
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-primary submit-rating-btn px-4" data-destination-id="{{ destination.id }}">
+            Submit
+        </button>
+    </div>
+</form>
+<p id="average-rating-{{ destination.id }}">
+    Average Rating: {{ destination.rating if destination.ratings_count > 0 else "No ratings yet" }}
+</p>
+</div>
